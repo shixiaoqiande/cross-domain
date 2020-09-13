@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    hello 
+    <!-- 域名 一级域名 二级域名
+        baidu.com
+        music.baidu.com
+    -->
+   <iframe src="http://b.ruanye.com:4000/b.html" frameborder="0" id="frame" onload="load()"></iframe>
+    <script>
+      document.domain ='ruanye.com'
+      function load(){
+          
+          console.log(frame.contentWindow.a)
+      }
+    </script>
+</body>
+</html>

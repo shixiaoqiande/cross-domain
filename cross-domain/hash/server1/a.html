@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- a、b 同一个域名
+    c独立
+    a获取c的数据，a先引用c c把值放在window.name上，把a的引用地址改到b -->
+    <div style="height:20px;color:rebeccapurple;padding:20px">我是a页面</div>
+    <iframe id = "frame" src="http://localhost:4000/c.html" frameborder="0" onload="load()"></iframe>
+    <script>  
+    let firstload = true; 
+   function load(){
+        let frame= document.getElementById('frame');
+        
+        if(firstload){
+            frame.src ='http://localhost:3000/b.html';
+           firstload = false; 
+
+        }else{
+            console.log(frame.contentWindow.name)
+        }
+      
+    } 
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="fa"></div>
+    <div id="jie"></div>
+    <input type="text" id="xie">
+    <script>
+    //一般使用socket.io 进行兼容
+    let socket = new WebSocket('ws:localhost:3000');
+    socket.onopen=function(){
+        xie.onchange = function(){
+            console.log(xie.value)
+            socket.send(xie.value)
+            fa.innerHTML = xie.value
+        }
+    }
+    socket.on('news',(data)=>{console.log(data,'---------')})
+    socket.onmessage=function(e){
+        // let data = JSON.parse(e.data)
+      console.log(e.data)
+      jie.innerHTML = e.data
+    }
+    </script>
+</body>
+</html>
